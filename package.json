@@ -4,11 +4,12 @@
   "description": "烹飪社團一頁式網站",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js",
-    "build":  "cd frontend-react && npm install && npm run build",
-    "install-frontend": "cd frontend-react && npm install"
-  },
+  "start": "node server.js",
+  "dev": "node server.js",
+  "build": "cd frontend-react && npm install && npm run build",
+  "install-frontend": "cd frontend-react && npm install"
+  }
+,
   "dependencies": {
     "express": "^4.18.2"
   },
