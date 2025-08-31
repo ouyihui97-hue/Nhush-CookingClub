@@ -6,7 +6,7 @@
   "scripts": {
   "start": "node server.js",
   "dev": "node server.js",
-  "build": "cd frontend-react && npm install && npm run build",
+  "build": "cd frontend-react && npm run build",
   "install-frontend": "cd frontend-react && npm install"
   }
 ,
