@@ -1,0 +1,21 @@
+{
+  "name": "cooking-club-website",
+  "version": "1.0.0",
+  "description": "烹飪社團一頁式網站",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build":  "cd frontend-react && npm install && npm run build",
+    "install-frontend": "cd frontend-react && npm install"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["cooking", "club", "website", "react"],
+  "author": "Cooking Club",
+  "license": "MIT"
+}

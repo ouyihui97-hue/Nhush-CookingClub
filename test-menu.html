@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漢堡選單測試</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding-top: 80px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b35;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #ff6b35;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f8f9fa;
+            color: #ff6b35;
+        }
+
+        .content {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .test-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                🍳 烹飪社
+            </div>
+            
+            <div class="nav-menu desktop-menu">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#news">News</a>
+                <a href="#gallery">Gallery</a>
+            </div>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#news">News</a>
+            <a href="#gallery">Gallery</a>
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1>🍳 漢堡選單測試頁面</h1>
+        
+        <div class="test-section">
+            <h2>📱 測試說明</h2>
+            <p>請將瀏覽器視窗縮小到 768px 以下，然後點擊右上角的三條線圖示來測試漢堡選單。</p>
+        </div>
+
+        <div class="test-section">
+            <h2>✅ 預期行為</h2>
+            <ul>
+                <li>點擊漢堡圖示時，三條線應該變成 X 形狀</li>
+                <li>選單應該從上方滑下</li>
+                <li>選單項目應該可以點擊</li>
+                <li>點擊選單項目後，選單應該收起</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>🔧 故障排除</h2>
+            <p>如果選單無法正常展開，請檢查：</p>
+            <ul>
+                <li>瀏覽器控制台是否有 JavaScript 錯誤</li>
+                <li>CSS 樣式是否正確載入</li>
+                <li>z-index 值是否正確設定</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // 點擊選單項目時收起選單
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const hamburger = document.querySelector('.hamburger');
+                const mobileMenu = document.getElementById('mobileMenu');
+                
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
